@@ -1,0 +1,1 @@
+Build ComfyUI images for running on Docker. Based on Ubuntu Linux and Pytorch, ComfyUI is configured with plugins and models satisfying OFFICIAL workflow templates. Additional plugins and models are also collected and kept up-to-date. Supported plugins and the corresponding compatible virtual environment are provided.
