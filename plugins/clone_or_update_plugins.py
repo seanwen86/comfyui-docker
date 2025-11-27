@@ -7,6 +7,25 @@ import shutil
 
 _cur_dir = pathlib.Path(__file__).parent
 
+
+
+def get_default_branch(repo:Repo):
+    
+    # 获取远程 origin 的 HEAD 引用（如 'refs/remotes/origin/main'）
+    try:
+        remote_head = repo.refs['origin/HEAD']
+        # 提取分支名，例如从 'origin/main' 得到 'main'
+        branch_name = str(remote_head.reference).split('/')[-1]
+        return branch_name
+    except (IndexError, KeyError, AttributeError):
+        # 回退方案：尝试常见分支名
+        for candidate in ['main', 'master', 'trunk', 'development']:
+            if candidate in repo.remotes.origin.refs:
+                return candidate
+        # 如果都找不到，返回 None 或抛出异常
+        raise RuntimeError("无法确定默认分支名称")
+
+
 def clone_git_repository(repo_dir, git_url, commit):
         
         if os.path.exists(repo_dir):
@@ -14,7 +33,7 @@ def clone_git_repository(repo_dir, git_url, commit):
             if commit:
                 repo.git.checkout(commit)
                 repo.git.submodule('update', '--init', '--recursive')
-
+            commit = repo.head.object.hexsha
             print(f"Repository already exists '{repo_dir}', do checkout {commit[:7]}.")
             return commit
         
@@ -36,11 +55,15 @@ def update_git_repository(repo_dir):
     
     try:
         repo = Repo(repo_dir)
-        origin = repo.remote(name="origin")
-        origin.pull()
+        branch = get_default_branch(repo)
+        repo.git.checkout(branch)
+        # origin = repo.remote(name="origin")
+        # origin.pull()
+        print(f'branch = {branch}')
+        repo.remotes.origin.pull()
         repo.git.submodule('update', '--init', '--recursive')
     except (KeyboardInterrupt,Exception) as e:
-        print(f"Failed to update '{repo_dir}': {e}")
+        print(f"Failed to update '{repo_dir}' branch '{branch}': {e}")
         exit(1)
     
     return repo.head.object.hexsha # latest commit hash
