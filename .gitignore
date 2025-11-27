@@ -1,5 +1,7 @@
-plugins/plugins
+plugins/plugins/**
 models/models
+!plugins/plugins/clone_or_update_plugins
+updated_plugins.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,17 @@
+{
+    "comfyui_controlnet_aux": {
+        "name": "comfyui_controlnet_aux",
+        "url":"https://github.com/Fannovel16/comfyui_controlnet_aux",
+        "commit":""
+    },
+    "ComfyUI-segment-anything-2": {
+        "name": "ComfyUI-segment-anything-2",
+        "url": "https://github.com/kijai/ComfyUI-segment-anything-2",
+        "commit":""
+    },
+    "ComfyUI-KJNodes": {
+        "name": "ComfyUI-KJNodes",
+        "url": "https://github.com/kijai/ComfyUI-KJNodes",
+        "commit":""
+    }
+}
