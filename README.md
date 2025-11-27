@@ -9,3 +9,8 @@ Build ComfyUI images for running on Docker. Based on Ubuntu Linux and Pytorch, C
 
 ### TODOs
 1. Additional plugins and models are also collected and kept up-to-date. Supported plugins and the corresponding compatible virtual environment are provided.
+
+
+### Contribution
+1. add popular models
+2. add popular plugins, and compatible python environment
