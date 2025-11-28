@@ -1,10 +1,16 @@
 Build ComfyUI images for running on Docker. Based on Ubuntu Linux and Pytorch, ComfyUI is configured with plugins and models satisfying OFFICIAL workflow templates. 
 
 ### Usage
+1. pull the latest image from DockerHub: `docker pull seanwen86/comfyui`, or with specific tag
+2. download models: `python download_models.py`
+3. run: `docker run -d --gpus all -p 8188:8188 -v path_to/models:/workspace/ComfyUI/models seanwen86/comfyui:latest`
+4. visit comfyui via web browser: `127.0.0.1:8188` 
+
+### Build Docker Image
 1. download plugins, `python clone_or_update_plugins.py` 
-2. build docker image, `docker build -t sean/comfy:latest .`
+2. build docker image, `docker build -t seanwen86/comfyui:nightly .`
 3. download models for official workflows, `python download_models.py`
-4. `docker run -d --gpus all -p 8188:8188 -v path_to/models:/workspace/ComfyUI/models sean/comfy:latest`
+4. `docker run -d --gpus all -p 8188:8188 -v path_to/models:/workspace/ComfyUI/models seanwen86/comfyui:nightly`
 
 
 ### TODOs
