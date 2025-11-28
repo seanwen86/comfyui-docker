@@ -20,3 +20,6 @@ Build ComfyUI images for running on Docker. Based on Ubuntu Linux and Pytorch, C
 ### Contribution
 1. add popular models
 2. add popular plugins, and compatible python environment
+
+### Hints
+1. If downloading some models from HuggingFace fails, you can try your luck at [ModelScope](https://modelscope.cn/models).
