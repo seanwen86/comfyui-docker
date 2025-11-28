@@ -7,8 +7,8 @@ from pathlib import Path
 
 _cur_dir = Path(__file__).parent
 
-#  export HF_ENDPOINT="hf-mirror.com"
-hf_endpoint = os.environ.get('HF_ENDPOINT', '')
+#  export HF_ENDPOINT="https://hf-mirror.com"
+hf_endpoint = os.environ.get('HF_ENDPOINT', None)
 
 def download_model(url, save_path):
     """下载单个模型文件并显示进度条"""
