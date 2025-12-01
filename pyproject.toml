@@ -1,0 +1,12 @@
+[project]
+name = "comfyui-docker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "chardet>=5.2.0",
+    "gitpython>=3.1.45",
+    "requests>=2.32.5",
+    "tqdm>=4.67.1",
+]
