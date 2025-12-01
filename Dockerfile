@@ -24,9 +24,13 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # add comfyui plugins and configure dependencies
 COPY plugins/plugins /workspace/ComfyUI/custom_nodes/
 COPY plugins/requirements.txt /workspace/ComfyUI/custom_nodes/requirements.txt
+COPY plugins/constraints.txt /workspace/ComfyUI/custom_nodes/constraints.txt
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install -r /workspace/ComfyUI/custom_nodes/requirements.txt
-
+    pip install -r /workspace/ComfyUI/custom_nodes/requirements.txt \
+    --constraint /workspace/ComfyUI/custom_nodes/constraints.txt
+RUN rm -rf /workspace/ComfyUI/custom_nodes/constraints.txt \
+    /workspace/ComfyUI/custom_nodes/requirements.txt
+    
 ENTRYPOINT [ "python", "main.py", "--listen", "0.0.0.0" ]
 
 
