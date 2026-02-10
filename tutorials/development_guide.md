@@ -10,7 +10,7 @@ clone this repository to local, and rebuild the python virtual environment.
 git clone https://github.com/seanwen86/comfyui-docker.git
 cd comfyui-docker
 uv sync
-.venv/bin/activate
+source .venv/bin/activate
 ```
 
 ## Build Docker Image
@@ -19,7 +19,7 @@ uv sync
 git clone https://github.com/seanwen86/comfyui-docker.git
 cd comfyui-docker
 uv sync
-.venv/bin/activate
+source .venv/bin/activate
 ```
 2. download plugins
 ```bash
@@ -46,7 +46,7 @@ docker run -d --gpus all -p 8188:8188 -v $(pwd)/models/models:/workspace/ComfyUI
 git clone https://github.com/seanwen86/comfyui-docker.git
 cd comfyui-docker
 uv sync
-.venv/bin/activate
+source .venv/bin/activate
 ```
 2. download latest release `ComfyUI-0.12.3.tar.gz` source code(tar.gz) of ComfyUI from website `https://github.com/Comfy-Org/ComfyUI/releases`, put it into folder `ComfyUI` . or using cmd like below to download, take `ComfyUI-0.12.3` for example.
 ```bash
