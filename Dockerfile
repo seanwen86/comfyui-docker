@@ -3,7 +3,7 @@ FROM pytorch/pytorch:2.9.0-cuda12.8-cudnn9-devel
 
 LABEL maintainer="Sean@comfyui-docker"
 
-ARG COMFY_VERSION=0.3.75
+ARG COMFY_VERSION=0.12.3
 
 #  For fixing ImportError: libGL.so.1 libgthread2.0.so
 COPY ComfyUI/sources.list /etc/apt/sources.list
