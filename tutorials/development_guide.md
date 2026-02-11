@@ -109,16 +109,21 @@ uv run models/download_models.py
 ```bash
 uv run plugins/clone_or_update_plugins.py --type CLONE
 ```
-11. OPTIONAL, update plugins to latest.
+or **OPTIONAL**, update plugins to latest.
 ```bash
 uv run plugins/clone_or_update_plugins.py --type UPDATE
 ```
 
-12. if `step 10` and `step 11` done, replace original `plugins.json`
+11. if `step 10` is done, replace original `plugins.json`
 ```bash
 mv -f plugins/updated_plugins.json plugins/plugins.json
 ```
 
+12. collecting `plugins/remapped_requirements.txt`, and replace original `plugins/requirements.txt`
+```bash
+uv run plugins/requirements_plugins.py
+mv -f plugins/remapped_requirements.txt plugins/requirements.txt
+```
 13. go to section **[Build Docker Image](#build-docker-image)**.
 
 14. cleaning if all succeeded, BE CAREFUL!!!.
