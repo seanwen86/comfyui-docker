@@ -76,7 +76,7 @@ def main(json_file_path,save_dir:Path):
                 continue
             
             if hf_endpoint and "huggingface.co" in url:
-                url = url.replace("huggingface.co", hf_endpoint)
+                url = url.replace("https://huggingface.co", hf_endpoint)
                 
             # 下载文件
             print(f"开始下载: {name} from {url}")
