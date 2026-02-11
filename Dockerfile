@@ -5,9 +5,10 @@ LABEL maintainer="Sean@comfyui-docker"
 
 ARG COMFY_VERSION=0.12.3
 
-#  For fixing ImportError: libGL.so.1 libgthread2.0.so
+#  For fixing ImportError: libGL.so.1 libgthread2.0.so libOpenGL.so.0
 COPY ComfyUI/sources.list /etc/apt/sources.list
-RUN apt update && apt install -y libgl1 libglib2.0-0 git pkg-config libcairo2-dev
+RUN apt update && apt install -y libgl1 libglib2.0-0 git pkg-config libcairo2-dev \
+    libgl1-mesa-glx freeglut3-dev
 # ffmpeg dependencies
 RUN apt install -y ffmpeg libavformat-dev libavcodec-dev libavdevice-dev \
     libavutil-dev libavfilter-dev libswscale-dev libswresample-dev

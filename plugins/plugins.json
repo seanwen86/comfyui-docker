@@ -13,5 +13,55 @@
         "name": "ComfyUI-KJNodes",
         "url": "https://github.com/kijai/ComfyUI-KJNodes",
         "commit": "50a0837f9aea602b184bbf6dbabf66ed2c7a1d22"
+    },
+    "ComfyUI_essentials": {
+        "name": "ComfyUI_essentials",
+        "url": "https://github.com/cubiq/ComfyUI_essentials",
+        "commit": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9"
+    },
+    "ComfyUI-WanVideoWrapper": {
+        "name": "ComfyUI-WanVideoWrapper",
+        "url": "https://github.com/kijai/ComfyUI-WanVideoWrapper",
+        "commit": "3d7b49e2df66bbbe379cd54748baf9decfe678a2"
+    },
+    "ComfyUI_Fill-Nodes": {
+        "name": "ComfyUI_Fill-Nodes",
+        "url": "https://github.com/filliptm/ComfyUI_Fill-Nodes",
+        "commit": "5f95113fc5fb0ec415b292ede85595ef618b40e9"
+    },
+    "ComfyUI-Inpaint-CropAndStitch": {
+        "name": "ComfyUI-Inpaint-CropAndStitch",
+        "url": "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch",
+        "commit": "823bbf96aa103edbcdb79d14c1a4ec45ddcd88cb"
+    },
+    "ComfyUI-qwenmultiangle": {
+        "name": "ComfyUI-qwenmultiangle",
+        "url": "https://github.com/jtydhr88/ComfyUI-qwenmultiangle",
+        "commit": "c264343add0423ca447a0ba8fb62e1d312f5370f"
+    },
+    "ComfyUI_LayerStyle": {
+        "name": "ComfyUI_LayerStyle",
+        "url": "https://github.com/chflame163/ComfyUI_LayerStyle",
+        "commit": "d94bef1ee5ed3656f5ff1bb2830a4ffd94f40935"
+    },
+    "ComfyUI-VideoHelperSuite": {
+        "name": "ComfyUI-VideoHelperSuite",
+        "url": "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite",
+        "commit": "993082e4f2473bf4acaf06f51e33877a7eb38960"
+    },
+    "ComfyUI-SeedVR2_VideoUpscaler": {
+        "name": "ComfyUI-SeedVR2_VideoUpscaler",
+        "url": "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler",
+        "commit": "4490bd1f482e026674543386bb2a4d176da245b9"
+    },
+    "ComfyUI-WanAnimatePreprocess": {
+        "name": "ComfyUI-WanAnimatePreprocess",
+        "url": "https://github.com/kijai/ComfyUI-WanAnimatePreprocess",
+        "commit": "1a35b81a418bbba093356ad19b19bf2a76a24f4e"
+    },
+    "ComfyUI-SCAIL-Pose": {
+        "name": "ComfyUI-SCAIL-Pose",
+        "url": "https://github.com/kijai/ComfyUI-SCAIL-Pose",
+        "commit": "11402b150d728440a4a89964faa58907f84c35e6"
     }
 }

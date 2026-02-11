@@ -2,6 +2,8 @@ plugins/plugins/**
 models/models
 !plugins/plugins/clone_or_update_plugins
 updated_plugins.json
+remapped_requirements.txt
+merged_requirements.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
