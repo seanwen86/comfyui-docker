@@ -83,7 +83,8 @@ for _, result in results.items():
             model_name = model.get('name', '')
             if model_name:
                 all_models[model_name] = model
-    
+with open(args.save, 'w', encoding='utf-8') as f:
+    f.write(json.dumps(all_models, ensure_ascii=False, indent=4))
 ```
 
 7. enter folder `models/workflow_templates-0.8.31` in which `models.json` is generated. All models are compatible with ComfyUI release, eg. `ComfyUI-0.12.3`. DO CHECK if all succeeded!!! 
