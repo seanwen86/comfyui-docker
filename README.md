@@ -3,7 +3,7 @@ Build ComfyUI images for running on Docker. Based on Ubuntu Linux and Pytorch, C
 ### Simple Usage
 1. pull the latest image from DockerHub: `docker pull seanwen86/comfyui`, or with specific tag
 2. download models: `python download_models.py`
-3. run: `docker run -d --gpus all -p 8188:8188 -v path_to/models:/workspace/ComfyUI/models seanwen86/comfyui:latest`
+3. run: `docker run -d --gpus all -p 8188:8188 -v $(pwd)/models/models:/workspace/ComfyUI/models seanwen86/comfyui:latest`
 4. visit comfyui via web browser: `127.0.0.1:8188` 
 
 ### Development Guide

@@ -1,4 +1,14 @@
 {
+    "qwen_3_8b_fp8mixed.safetensors": {
+        "name": "qwen_3_8b_fp8mixed.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/flux2-klein-9B/resolve/main/split_files/text_encoders/qwen_3_8b_fp8mixed.safetensors",
+        "directory": "text_encoders"
+    },
+    "flux-2-klein-base-9b-fp8.safetensors": {
+        "name": "flux-2-klein-base-9b-fp8.safetensors",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/resolve/main/flux-2-klein-base-9b-fp8.safetensors",
+        "directory": "diffusion_models"
+    },
     "Qwen-Edit-2509-Multiple-angles.safetensors": {
         "name": "hunyuan_3d_v2.1.safetensors",
         "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/loras/Qwen-Edit-2509-Multiple-angles.safetensors",
