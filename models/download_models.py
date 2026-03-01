@@ -52,7 +52,7 @@ def main(json_file_path,save_dir:Path):
         return
     
     # 遍历所有模型并下载
-    for model_id, model_info in models.items():
+    for model_info in models:
         try:
             # 提取模型信息
             name = model_info['name']
@@ -84,9 +84,9 @@ def main(json_file_path,save_dir:Path):
                 print(f"成功下载: {save_path}\n")
                 
         except KeyError as e:
-            print(f"模型信息不完整 {model_id}: 缺少 {str(e)} 字段")
+            print(f"模型信息不完整 {name}: 缺少 {str(e)} 字段")
         except Exception as e:
-            print(f"处理模型 {model_id} 时出错: {str(e)}")
+            print(f"处理模型 {name} 时出错: {str(e)}")
 
 if __name__ == "__main__":
 

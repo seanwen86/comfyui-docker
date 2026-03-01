@@ -350,6 +350,7 @@ def analyze_all_templates(templates_dir: str, whitelist_config: Dict = None) -> 
             statistics['model_link_errors'] += len(result['analysis']['missing_properties'])
 
     statistics['total_safetensors_files'] = list(statistics['total_safetensors_files'])
+    # print(statistics['total_safetensors_files'])
 
     return results, statistics
 
@@ -416,21 +417,43 @@ def main():
 
     results, statistics = analyze_all_templates(args.templates_dir, whitelist_config)
     report = generate_report(results, statistics)
+    # print(results)
 
     with open(args.report, 'w', encoding='utf-8') as f:
         f.write(report)
 
     print(report)
 
-    all_models = {}
+    preset_directories = ['checkpoints','diffusion_models','text_encoders', 'clip_vision', 
+        'loras', 'vae', 'controlnet','model_patches', 'audio_encoders', 
+        'upscale_models','style_models', 'latent_upscale_models']
+    all_models = []
+    visited = []
     for _, result in results.items():
         for model_loader in result['model_loaders']:
             models = model_loader['properties']['models'] if 'models' in model_loader['properties'] else []
             for model in models:
-                model_name = model.get('name', '')
-                if model_name:
-                    all_models[model_name] = model
-    
+                name = model['name']
+                if not name in visited: 
+                    visited.append(name)
+                    all_models.append(model)
+
+    for _, result in results.items():
+        for link in result['markdown_links']:
+            item = {}
+            name = link['text']
+            item['name'] = name
+            item['url'] = link['url']
+            directory = link['url'].split('/')[-2]
+            if directory in preset_directories:
+                item['directory'] = directory
+            else:
+                item['directory'] = 'unknown'
+
+            if not item['name'] in visited:
+                visited.append(name)
+                all_models.append(item)
+
     with open(args.save, 'w', encoding='utf-8') as f:
         f.write(json.dumps(all_models, ensure_ascii=False, indent=4))
 
