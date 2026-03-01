@@ -25,9 +25,10 @@ source .venv/bin/activate
 ```bash
 uv run plugins/clone_or_update_plugins.py
 ```
-3. build docker image, comfyui with tag `comfyui:nightly`
+3. build docker image, comfyui with tag `comfyui:devel` and `comfyui:release`
 ```bash
-docker build -t seanwen86/comfyui:nightly .
+docker build --target devel -t seanwen86/comfyui:devel . --load 
+docker build --target release -t seanwen86/comfyui:release . --load
 ```
 4. download models, **kinda huge**
 ```bash
@@ -35,7 +36,7 @@ uv run models/download_models.py
 ```
 5. run ComfyUI container
 ```bash
-docker run -d --gpus all -p 8188:8188 -v $(pwd)/models/models:/workspace/ComfyUI/models seanwen86/comfyui:nightly
+docker run -d --gpus all -p 8188:8188 -v $(pwd)/models/models:/workspace/ComfyUI/models seanwen86/comfyui:devel
 ```
 6. visit comfyui via web browser, `127.0.0.1:8188`
 
