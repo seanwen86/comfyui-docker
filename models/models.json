@@ -760,7 +760,7 @@
     },
     {
         "name": "flux-2-klein-base-9b-fp8.safetensors",
-        "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8",
+        "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/resolve/main/flux-2-klein-base-9b-fp8.safetensors",
         "directory": "diffusion_models"
     },
     {
@@ -885,7 +885,7 @@
     },
     {
         "name": "qwen_image_layered_fp8mixed.safetensors",
-        "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Layered_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_layered_fp8mixed.safetensors",
+        "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Layered_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_layered_fp8mixed.safetensors",
         "directory": "diffusion_models"
     },
     {
@@ -945,12 +945,12 @@
     },
     {
         "name": "Wan21-14B-SCAIL-preview_comfy_bf16.safetensors",
-        "url": "https://huggingface.co/Kijai/WanVideo_comfy/blob/main/SCAIL/Wan21-14B-SCAIL-preview_comfy_bf16.safetensors",
+        "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/SCAIL/Wan21-14B-SCAIL-preview_comfy_bf16.safetensors",
         "directory": "diffusion_models"
     },
     {
         "name": "Wan21-14B-SCAIL-preview_fp8_e4m3fn_scaled_KJ.safetensors",
-        "url": "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/blob/main/SCAIL/Wan21-14B-SCAIL-preview_fp8_e4m3fn_scaled_KJ.safetensors",
+        "url": "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/SCAIL/Wan21-14B-SCAIL-preview_fp8_e4m3fn_scaled_KJ.safetensors",
         "directory": "diffusion_models"
     },
     {
