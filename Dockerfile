@@ -5,7 +5,7 @@ FROM ${BASE_IMAGE} AS base
 
 LABEL author="Sean"
 
-ARG COMFYUI_VERSION=0.12.3
+ARG COMFYUI_VERSION=0.15.1
 ARG PYTHON_VERSION=python3.12
 
 # latest cuda version 13.1, NVIDIA GPU driver should support it
@@ -24,10 +24,12 @@ ARG PIP_MIRROR_URL=https://mirrors.aliyun.com/pypi/simple
 
 # required python and runtimes for comfyui plugins
 # For fixing ImportError: libGL.so.1 libgthread2.0.so libOpenGL.so.0
+# pyttsx3是文本转语音库，在Linux系统中需要调用系统级eSpeak-ng引擎来生成语音
 COPY ComfyUI/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \ 
     python3 python3-pip python-is-python3 \
     libglib2.0-0 libgl1 libopengl0 libcairo2 ffmpeg \
+    espeak-ng libespeak1 \
     && apt clean && rm -rf /var/lib/apt/lists/*
 
 #avoid error: externally-managed-environment, (safe in containers)
@@ -51,7 +53,7 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-rec
 
 # pytorch
 COPY ComfyUI/constraints.txt /workspace/constraints.txt
-RUN --mount=type=cache,id=pip-cache,target=/root/.cache/pip \
+RUN --mount=type=cache,target=/root/.cache/pip \
     pip install torch torchaudio torchvision \
     --index-url https://download.pytorch.org/whl/${PYTORCH_CUDA_VERSION} \
     --constraint /workspace/constraints.txt \
@@ -83,7 +85,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # add comfyui plugins and their dependencies
 COPY plugins/plugins /workspace/ComfyUI/custom_nodes/
 COPY plugins/requirements.txt /workspace/ComfyUI/custom_nodes/requirements.txt
-RUN --mount=type=cache,id=pip-cache,target=/root/.cache/pip \
+RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --no-build-isolation -r /workspace/ComfyUI/custom_nodes/requirements.txt \
     --constraint /workspace/constraints.txt \
     && pip cache purge

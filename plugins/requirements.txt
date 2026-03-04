@@ -1,7 +1,6 @@
 Pillow
 PyMuPDF
 PyOpenGL
-PyOpenGL_accelerate
 PyPDF2
 Scipy
 accelerate
@@ -11,6 +10,8 @@ albumentations
 blend_modes
 color-matcher
 colour-science
+decord
+demucs
 diffusers
 einops
 fal-client
@@ -25,6 +26,7 @@ google-cloud-storage
 google-genai
 httpx
 huggingface-hub
+hydra-core
 imageio-ffmpeg
 importlib-metadata
 kornia
@@ -32,8 +34,10 @@ librosa
 loguru
 matplotlib
 mediapipe
+mediapy
 moviepy
 mss
+ninja
 numba
 numpy
 ollama
@@ -42,6 +46,7 @@ onnx
 onnxruntime-gpu
 open_clip_torch
 openai
+openai-whisper
 opencv-contrib-python-headless
 pdf2image
 peft
@@ -52,6 +57,7 @@ psutil
 pyloudnorm
 pymatting
 python-dateutil
+pyttsx3
 pyyaml
 rembg
 reportlab
@@ -67,6 +73,7 @@ sounddevice
 taichi
 timm
 torch
+torchaudio
 torchvision
 tqdm
 transformers

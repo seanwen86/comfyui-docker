@@ -36,12 +36,14 @@ uv run models/download_models.py
 ```
 5. run ComfyUI container
 ```bash
-docker run -d --gpus all -p 8188:8188 -v $(pwd)/models/models:/workspace/ComfyUI/models seanwen86/comfyui:devel
+docker run --rm -d --gpus all -p 8188:8188 -v $(pwd)/models/models:/workspace/ComfyUI/models seanwen86/comfyui:devel
 ```
 6. visit comfyui via web browser, `127.0.0.1:8188`
 
 
-## Update to latest ComfyUI release (Development)
+## Update ComfyUI Docker (Development)
+
+### Step 1: clone comfyui-docker
 1. clone this repository to local, and rebuild the python virtual environment.
 ```bash
 git clone https://github.com/seanwen86/comfyui-docker.git
@@ -49,24 +51,27 @@ cd comfyui-docker
 uv sync
 source .venv/bin/activate
 ```
-2. download latest release `ComfyUI-0.12.3.tar.gz` source code(tar.gz) of ComfyUI from website `https://github.com/Comfy-Org/ComfyUI/releases`, put it into folder `ComfyUI` . or using cmd like below to download, take `ComfyUI-0.12.3` for example.
+### Step 2: update to latest comfyui (ie. `ComfyUI-0.15.1.tar.gz`)
+1. download latest release `ComfyUI-0.15.1.tar.gz` source code(tar.gz) of ComfyUI from website `https://github.com/Comfy-Org/ComfyUI/releases`, put it into folder `ComfyUI` . or using cmd like below to download, take `ComfyUI-0.15.1` for example.
 ```bash
-curl -Lo ComfyUI/ComfyUI-0.12.3.tar.gz https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v0.12.3.tar.gz
+curl -Lo ComfyUI/ComfyUI-0.15.1.tar.gz https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v0.15.1.tar.gz
 ```
-3. uncompress `ComfyUI-0.12.3.tar.gz`，`comfyui-workflow-templates==0.8.31` can be found in `requirements.txt`. 
+2. uncompress `ComfyUI-0.15.1.tar.gz`，`comfyui-workflow-templates==0.8.31` can be found in `requirements.txt`. 
 ```bash
-tar -xzvf ComfyUI/ComfyUI-0.12.3.tar.gz -C ComfyUI/
-cat ComfyUI/ComfyUI-0.12.3/requirements.txt | grep workflow-templates
+tar -xzvf ComfyUI/ComfyUI-0.15.1.tar.gz -C ComfyUI/
+cat ComfyUI/ComfyUI-0.15.1/requirements.txt | grep workflow-templates
 ```
-4. download `workflow_templates-0.8.31.tar.gz` source code(tar.gz) from website `https://github.com/Comfy-Org/workflow_templates/releases`, put it into folder `models`, or using cmd like below to download. Note that the specific version `v0.8.31`.
+3. download `workflow_templates-0.9.4.tar.gz` source code(tar.gz) from website `https://github.com/Comfy-Org/workflow_templates/releases`, put it into folder `models`, or using cmd like below to download. Note that the specific version `v0.9.4`.
 ```bash
-curl -Lo models/workflow_templates-0.8.31.tar.gz https://github.com/Comfy-Org/workflow_templates/archive/refs/tags/v0.8.31.tar.gz
+curl -Lo ComfyUI/workflow_templates-0.9.4.tar.gz https://github.com/Comfy-Org/workflow_templates/archive/refs/tags/v0.9.4.tar.gz
 ```
-5. uncompress `workflow_templates-0.8.31.tar.gz` to folder `models/workflow_templates-0.8.31`.
+4. uncompress `workflow_templates-0.9.4.tar.gz` to folder `models/workflow_templates-0.9.4`.
 ```bash
-tar -xzvf models/workflow_templates-0.8.31.tar.gz -C models/
+tar -xzvf ComfyUI/workflow_templates-0.9.4.tar.gz -C ComfyUI/
 ```
-6. edit `models/workflow_templates-0.8.31/scripts/analyze_models.py`, and make following two changes.
+### update dependent models
+
+1. edit `ComfyUI/workflow_templates-0.9.4/scripts/analyze_models.py`, and make following two changes.
 
 ![edit analyze_models.py](./images/analyze_model_py_changes.png)
 
@@ -110,25 +115,48 @@ parser.add_argument('--save', default='./models.json', help='Output path')
         f.write(json.dumps(all_models, ensure_ascii=False, indent=4))
 ```
 
-7. enter folder `models/workflow_templates-0.8.31` in which `models.json` is generated. All models are compatible with ComfyUI release, eg. `ComfyUI-0.12.3`. DO CHECK if all succeeded!!! 
+2. enter folder `ComfyUI/workflow_templates-0.9.4` in which `models.json` is generated. All models are compatible with ComfyUI release, eg. `ComfyUI-0.15.1`. DO CHECK if all succeeded!!! 
 ```bash
-cd models/workflow_templates-0.8.31
+cd ComfyUI/workflow_templates-0.9.4
 python scripts/analyze_models.py
 ```
 
-8. return to root folder of this project, move generated `models.json` and replace old `models/models.json`.
+3. return to root folder of this project, move generated `models.json` and replace old `models/models.json`.
 ```bash
-cd ../..
-cp -f models/workflow_templates-0.8.31/models.json models/models.json
-cp -f models/workflow_templates-0.8.31/scripts/analyze_models.py models/analyze_models.py
+cd -
+cp models/models.json models/models_bak.json
+cp -f ComfyUI/workflow_templates-0.9.4/models.json models/models.json
+cp -f ComfyUI/workflow_templates-0.9.4/scripts/analyze_models.py models/analyze_models.py
 ```
 
-9. download the collected models in `models.json`
+4. download the collected models in `models.json`, NOTE: models are huge.
 ```bash
 uv run models/download_models.py
 ```
 
-10. if new plugins required, add them into `plugins/plugins.json`, and download.
+### update dependent plugins
+1. find new dependent plugins
+```bash
+cd ComfyUI/workflow_templates-0.9.4
+python scripts/check_links.py extract
+cat links_to_check.txt | grep github.com
+```
+From the output, filter out all the dependent plugins as follows. NOTE: delete links that are not plugins, sometimes, links need to be corrected.
+if new plugins are founded, add them into `plugins/plugins.json` and blank `commit` for new plugins.
+```
+https://github.com/AIWarper/ComfyUI-NormalCrafterWrapper
+https://github.com/Fannovel16/ComfyUI-Frame-Interpolation
+https://github.com/Fannovel16/comfyui_controlnet_aux
+https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
+https://github.com/Lightricks/ComfyUI-LTXVideo
+https://github.com/cubiq/ComfyUI_essentials
+https://github.com/filliptm/ComfyUI_Fill-Nodes
+https://github.com/kijai/ComfyUI-DepthAnythingV2
+https://github.com/kijai/ComfyUI-KJNodes
+https://github.com/kijai/ComfyUI-segment-anything-2
+https://github.com/lum3on/ComfyUI_AudioTools
+```
+2. download or update plugins
 ```bash
 uv run plugins/clone_or_update_plugins.py --type CLONE
 ```
@@ -137,23 +165,31 @@ or **OPTIONAL**, update plugins to latest.
 uv run plugins/clone_or_update_plugins.py --type UPDATE
 ```
 
-11. if `step 10` is done, replace original `plugins.json`
+3. if download or update successfully, replace original `plugins.json`
 ```bash
+mv plugins/plugins.json plugins/plugins_bak.json
 mv -f plugins/updated_plugins.json plugins/plugins.json
 ```
 
-12. collecting `plugins/remapped_requirements.txt`, and replace original `plugins/requirements.txt`
+4. update `plugins/requirements.txt`
 ```bash
+mv plugins/requirements.txt plugins/requirements_bak.txt
 uv run plugins/requirements_plugins.py
 mv -f plugins/remapped_requirements.txt plugins/requirements.txt
 ```
-13. go to section **[Build Docker Image](#build-docker-image)**.
 
-14. cleaning if all succeeded, BE CAREFUL!!!.
+### build and test docker image
+1. edit `Dockerfile`, update `ARG COMFYUI_VERSION` to `ARG COMFYUI_VERSION=0.15.1`.
+2. go to section **[Build Docker Image](#build-docker-image)**.
+
+### clean up
+1. cleaning if all succeeded, BE CAREFUL!!!.
 ```bash
-rm -rf models/workflow_templates-0.8.31
-rm -rf ComfyUI/ComfyUI-0.12.3
-rm -f models/workflow_templates-0.8.31.tar.gz
+rm -rf models/workflow_templates-0.9.4
+rm -rf ComfyUI/ComfyUI-0.15.1
+rm -f models/workflow_templates-0.9.4.tar.gz
+rm -f models/models_bak.json
+rm -f plugins/requirements_bak.txt
 ```
 
 

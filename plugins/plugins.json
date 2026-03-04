@@ -1,8 +1,33 @@
 {
+    "ComfyUI-LTXVideo": {
+        "name": "ComfyUI-LTXVideo",
+        "url": "https://github.com/Lightricks/ComfyUI-LTXVideo",
+        "commit": "82bd963cdeb66d023bed8c99324a307020907ef8"
+    },
+    "ComfyUI-DepthAnythingV2": {
+        "name": "ComfyUI-DepthAnythingV2",
+        "url": "https://github.com/kijai/ComfyUI-DepthAnythingV2",
+        "commit": "d505cbca99803fc63327b8305618a23e59a18b42"
+    },
+    "ComfyUI-NormalCrafterWrapper": {
+        "name": "ComfyUI-NormalCrafterWrapper",
+        "url": "https://github.com/AIWarper/ComfyUI-NormalCrafterWrapper",
+        "commit": "cf0d92bc5480e4a2785ebecf878d40bf2eb5f5aa"
+    },
+    "ComfyUI-Frame-Interpolation": {
+        "name": "ComfyUI-Frame-Interpolation",
+        "url": "https://github.com/Fannovel16/ComfyUI-Frame-Interpolation",
+        "commit": "c66ffe51b597e85e18514bae373c3ee391438301"
+    },
+    "ComfyUI_AudioTools": {
+        "name": "ComfyUI_AudioTools",
+        "url": "https://github.com/lum3on/ComfyUI_AudioTools",
+        "commit": "c816d0a1629c05a0f463ddb77ea96ada69875d32"
+    },
     "comfyui_controlnet_aux": {
         "name": "comfyui_controlnet_aux",
         "url": "https://github.com/Fannovel16/comfyui_controlnet_aux",
-        "commit": "136f125c89aed92ced1b6fbb491e13719b72fcc0"
+        "commit": "95a13e2e5d8f8ae57583fbebb0be1f670889858b"
     },
     "ComfyUI-segment-anything-2": {
         "name": "ComfyUI-segment-anything-2",
@@ -12,7 +37,7 @@
     "ComfyUI-KJNodes": {
         "name": "ComfyUI-KJNodes",
         "url": "https://github.com/kijai/ComfyUI-KJNodes",
-        "commit": "50a0837f9aea602b184bbf6dbabf66ed2c7a1d22"
+        "commit": "9b565354e32a7061296ac598d9c7f445e10d31ed"
     },
     "ComfyUI_essentials": {
         "name": "ComfyUI_essentials",
@@ -22,17 +47,17 @@
     "ComfyUI-WanVideoWrapper": {
         "name": "ComfyUI-WanVideoWrapper",
         "url": "https://github.com/kijai/ComfyUI-WanVideoWrapper",
-        "commit": "3d7b49e2df66bbbe379cd54748baf9decfe678a2"
+        "commit": "df8f3e49daaad117cf3090cc916c83f3d001494c"
     },
     "ComfyUI_Fill-Nodes": {
         "name": "ComfyUI_Fill-Nodes",
         "url": "https://github.com/filliptm/ComfyUI_Fill-Nodes",
-        "commit": "5f95113fc5fb0ec415b292ede85595ef618b40e9"
+        "commit": "49be8e96f9ebf16b655cb61518432ee5047ce1c7"
     },
     "ComfyUI-Inpaint-CropAndStitch": {
         "name": "ComfyUI-Inpaint-CropAndStitch",
         "url": "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch",
-        "commit": "823bbf96aa103edbcdb79d14c1a4ec45ddcd88cb"
+        "commit": "c2c2a410ffba1157c7809d425f0f3fe9bedef96b"
     },
     "ComfyUI-qwenmultiangle": {
         "name": "ComfyUI-qwenmultiangle",
