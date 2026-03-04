@@ -69,7 +69,7 @@ curl -Lo ComfyUI/workflow_templates-0.9.4.tar.gz https://github.com/Comfy-Org/wo
 ```bash
 tar -xzvf ComfyUI/workflow_templates-0.9.4.tar.gz -C ComfyUI/
 ```
-### update dependent models
+### Step 3: update dependent models
 
 1. edit `ComfyUI/workflow_templates-0.9.4/scripts/analyze_models.py`, and make following two changes.
 
@@ -134,7 +134,7 @@ cp -f ComfyUI/workflow_templates-0.9.4/scripts/analyze_models.py models/analyze_
 uv run models/download_models.py
 ```
 
-### update dependent plugins
+### Step 4: update dependent plugins
 1. find new dependent plugins
 ```bash
 cd ComfyUI/workflow_templates-0.9.4
@@ -178,11 +178,11 @@ uv run plugins/requirements_plugins.py
 mv -f plugins/remapped_requirements.txt plugins/requirements.txt
 ```
 
-### build and test docker image
+### Step 5: build and test docker image
 1. edit `Dockerfile`, update `ARG COMFYUI_VERSION` to `ARG COMFYUI_VERSION=0.15.1`.
 2. go to section **[Build Docker Image](#build-docker-image)**.
 
-### clean up
+### Step 6: clean up
 1. cleaning if all succeeded, BE CAREFUL!!!.
 ```bash
 rm -rf models/workflow_templates-0.9.4
