@@ -1,4 +1,6 @@
-#ubuntu:24.04, python 3.12, pytorch:2.10.0, cuda13.0, cudatoolkit-13.0
+#ubuntu:24.04, python 3.12, pytorch:2.10.0, 
+# release: cuda13.0
+# devel: cuda-toolkit-13.1, cudnn9-cuda-13
 # for ARCH x86_64/amd64 only
 ARG BASE_IMAGE=ubuntu:24.04
 FROM ${BASE_IMAGE} AS base
@@ -11,7 +13,7 @@ ARG PYTHON_VERSION=python3.12
 # latest cuda version 13.1, NVIDIA GPU driver should support it
 # to check using nvidia-smi 
 ARG CUDA_TOOLKIT_VERSION=cuda-toolkit-13-1
-ARG CUDNN_VERSION=cudnn9-cuda-13-1
+ARG CUDNN_VERSION=cudnn9-cuda-13
 
 # lower version of cuda for pytorch than that for system is allowed. 
 # for example, cuda 13.0 for pytorch against cuda 13.1 for system
